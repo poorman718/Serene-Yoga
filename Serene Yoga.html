@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serene Yoga - Mind & Body Wellness</title>
+  <meta name="description" content="Transform your life with Serene Yoga. Join our classes for stress relief, flexibility, and inner peace. Beginner-friendly sessions available.">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;700&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #5d9b7b;
+      --primary-light: #a8d5ba;
+      --primary-dark: #3a6a52;
+      --secondary: #f8f9f7;
+      --secondary-dark: #232b2b;
+      --white: #fff;
+      --black: #181c1a;
+      --text: #3a4a3e;
+      --text-dark: #e6ede3;
+      --accent: #f0f5f1;
+      --accent-dark: #2d3a2e;
+      --nav-height: 80px;
+      --shadow: 0 4px 24px rgba(93, 155, 123, 0.1);
+      --glass: rgba(255,255,255,0.85);
+      --glass-dark: rgba(34, 40, 36, 0.75);
+      --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --border-radius: 16px;
+    }
+    
+    [data-theme="dark"] {
+      --primary: #7dbb9a;
+      --primary-light: #5d9b7b;
+      --primary-dark: #a8d5ba;
+      --secondary: #232b2b;
+      --white: #181c1a;
+      --text: #e6ede3;
+      --accent: #2d3a2e;
+      --shadow: 0 4px 24px rgba(34, 40, 36, 0.25);
+      --glass: rgba(34, 40, 36, 0.75);
+    }
+    
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+    
+    body {
+      font-family: 'Quicksand', Arial, sans-serif;
+      background-color: var(--secondary);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Skip to Content Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: var(--white);
+      padding: 12px;
+      z-index: 100;
+      transition: top 0.3s;
+      border-radius: 0 0 4px 0;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--primary-dark);
+    }
+    
+    /* Navigation */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      transition: all var(--transition);
+      border-bottom: 1px solid rgba(168, 213, 186, 0.1);
+    }
+    
+    .main-nav.scrolled {
+      height: 70px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.3s;
+      position: relative;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: calc(100% - 1.6rem);
+    }
+    
+    .nav-link.active,
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      border: 1px solid rgba(168, 213, 186, 0.1);
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu .nav-link {
+      display: block;
+      padding: 0.5rem 1rem;
+      margin: 0.3rem 0;
+    }
+    
+    .dropdown-menu .nav-link::after {
+      left: 0;
+      transform: none;
+    }
+    
+    .dropdown-menu .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* Theme Toggle */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-left: 1.5rem;
+      user-select: none;
+      position: relative;
+    }
+    
+    .theme-toggle input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      width: 50px;
+      height: 26px;
+      background: var(--accent);
+      border-radius: 50px;
+      position: relative;
+      transition: background var(--transition);
+      margin-right: 0.5rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      transition: transform var(--transition), background var(--transition);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .theme-toggle input:checked + .toggle-slider {
+      background: var(--primary);
+    }
+    
+    .theme-toggle input:checked + .toggle-slider::before {
+      transform: translateX(24px);
+      background: var(--accent);
+    }
+    
+    .toggle-icon {
+      font-size: 1.2rem;
+      color: var(--primary);
+      transition: color var(--transition);
+    }
+    
+    [data-theme="dark"] .toggle-icon.sun { color: #f7e07a; }
+    [data-theme="dark"] .toggle-icon.moon { color: #e6ede3; }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(93, 155, 123, 0.05), rgba(248, 249, 247, 0.8)), 
+                  url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: calc(var(--nav-height) + 2rem) 2rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    [data-theme="dark"] .hero {
+      background: linear-gradient(rgba(34,40,36,0.7), rgba(125, 187, 154, 0.2)), 
+                  url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.05) 100%);
+      z-index: 0;
+    }
+    
+    .hero-content {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(168, 213, 186, 0.2);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.3s;
+    }
+    
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(168, 213, 186, 0.1);
+    }
+    
+    .hero-text {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--text);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(93, 155, 123, 0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(93, 155, 123, 0.3);
+    }
+    
+    .cta-button:hover::before {
+      opacity: 1;
+    }
+    
+    .cta-button:active {
+      transform: translateY(1px);
+    }
+    
+    /* Floating Elements Animation */
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .floating-element {
+      position: absolute;
+      background: rgba(168, 213, 186, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+    
+    /* Section Styles */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 3rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    .section-title.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    /* Card Layouts */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(93, 155, 123, 0.15);
+    }
+    
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card-icon {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .card:hover .card-icon {
+      transform: scale(1.1);
+    }
+    
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.5rem;
+      position: relative;
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(93, 155, 123, 0.15);
+    }
+    
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 3px solid var(--primary);
+      box-shadow: 0 4px 15px rgba(93, 155, 123, 0.15);
+      transition: transform 0.3s;
+    }
+    
+    .testimonial-card:hover .testimonial-avatar {
+      transform: scale(1.1);
+    }
+    
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .testimonial-role {
+      font-size: 0.95rem;
+      color: #7a8c7a;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-text {
+      font-size: 1rem;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.3;
+      position: absolute;
+    }
+    
+    .testimonial-text::before {
+      top: -15px;
+      left: -10px;
+    }
+    
+    .testimonial-text::after {
+      bottom: -25px;
+      right: -10px;
+    }
+    
+    /* Schedule */
+    .schedule-container {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+    
+    .schedule-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.05rem;
+    }
+    
+    .schedule-table th, 
+    .schedule-table td {
+      padding: 1.2rem 0.7rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(168, 213, 186, 0.2);
+    }
+    
+    .schedule-table th {
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .schedule-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .schedule-table tr:hover td {
+      background: rgba(168, 213, 186, 0.1);
+    }
+    
+    /* Video */
+    .video-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+    
+    .video-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .video-wrapper iframe, 
+    .video-wrapper video {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+    
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .faq-item.visible { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+    
+    .faq-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(93, 155, 123, 0.1);
+    }
+    
+    .faq-question {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .faq-answer {
+      margin-top: 1rem;
+      color: var(--text);
+      font-size: 1rem;
+      display: none;
+      animation: fadeIn 0.5s;
+      padding-right: 1.5rem;
+    }
+    
+    .faq-item.open .faq-answer { 
+      display: block; 
+    }
+    
+    .faq-toggle {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-left: 0.7rem;
+      transition: transform 0.3s;
+    }
+    
+    .faq-item.open .faq-toggle { 
+      transform: rotate(90deg);
+    }
+    
+    /* Forms */
+    .form-container {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      margin: 0 auto;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+    
+    .form-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(168, 213, 186, 0.2);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--accent);
+      color: var(--text);
+      transition: all 0.3s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(93, 155, 123, 0.15);
+    }
+    
+    [data-theme="dark"] .form-input {
+      background: var(--accent-dark);
+      border: 1px solid rgba(125, 187, 154, 0.3);
+    }
+    
+    .form-button {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(93, 155, 123, 0.2);
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    .form-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(93, 155, 123, 0.3);
+    }
+    
+    .form-button:active {
+      transform: translateY(1px);
+    }
+    
+    /* Map */
+    .map-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+    
+    .map-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .map-wrapper iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border: none;
+    }
+    
+    /* Blog */
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(93, 155, 123, 0.15);
+    }
+    
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .blog-card:hover .blog-image {
+      transform: scale(1.05);
+    }
+    
+    .blog-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .blog-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      transition: color 0.3s;
+    }
+    
+    .blog-card:hover .blog-title {
+      color: var(--primary-light);
+    }
+    
+    .blog-meta {
+      font-size: 0.9rem;
+      color: #7a8c7a;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .blog-meta i {
+      color: var(--primary);
+    }
+    
+    .blog-excerpt {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .read-more {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .read-more:hover { 
+      color: var(--primary-light); 
+      gap: 1rem;
+    }
+    
+    .read-more i {
+      transition: transform 0.3s;
+    }
+    
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* Contact Info */
+    .contact-info {
+      text-align: center;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-info a:hover {
+      color: var(--primary-light);
+      text-decoration: underline;
+    }
+    
+    /* Policy Content */
+    .policy-content {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+    }
+    
+    .policy-content h3 {
+      color: var(--primary);
+      margin: 1.5rem 0 0.5rem 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .policy-content ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .policy-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Footer */
+    .main-footer {
+      padding: 3rem 0 1.5rem 0;
+      text-align: center;
+      color: #7a8c7a;
+      font-size: 1rem;
+      background: var(--glass);
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(168, 213, 186, 0.1);
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .social-links {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    .social-link {
+      color: var(--primary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(168, 213, 186, 0.1);
+    }
+    
+    .social-link:hover {
+      color: var(--white);
+      background: var(--primary);
+      transform: translateY(-3px) rotate(5deg);
+      box-shadow: 0 4px 10px rgba(93, 155, 123, 0.2);
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      margin-top: 1.5rem;
+    }
+    
+    /* WhatsApp Button */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2000;
+      background: #25d366;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      outline: none;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.3);
+    }
+    
+    .whatsapp-button:active {
+      transform: scale(0.95);
+    }
+    
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--glass);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(5px);
+    }
+    
+    .whatsapp-button:hover .whatsapp-tooltip {
+      opacity: 1;
+      right: 80px;
+    }
+    
+    /* Newsletter Button */
+    .newsletter-button {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 2000;
+      background: var(--primary);
+      color: var(--white);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(93, 155, 123, 0.2);
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      outline: none;
+      animation: pulse 2s infinite;
+    }
+    
+    .newsletter-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 25px rgba(93, 155, 123, 0.3);
+    }
+    
+    .newsletter-button:active {
+      transform: scale(0.95);
+    }
+    
+    .newsletter-container {
+      position: fixed;
+      bottom: 100px;
+      left: 30px;
+      z-index: 2000;
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      max-width: 300px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(168, 213, 186, 0.1);
+      transform: scale(0);
+      transform-origin: bottom left;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-container.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+    
+    .newsletter-title {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .section {
+        padding: 5rem 1.5rem;
+      }
+      
+      .hero-content {
+        padding: 2.5rem 2rem;
+      }
+      
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .schedule-table th, 
+      .schedule-table td {
+        padding: 1rem 0.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .main-nav {
+        padding: 0 3vw;
+      }
+      
+      .nav-list {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--nav-height));
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+        z-index: 999;
+      }
+      
+      .nav-list.active {
+        transform: translateX(0);
+      }
+      
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        margin-top: 1rem;
+      }
+      
+      .dropdown-menu .nav-link {
+        padding-left: 2rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .hero {
+        padding: calc(var(--nav-height) + 1rem) 1.5rem 1.5rem 1.5rem;
+      }
+      
+      .hero-content {
+        padding: 2rem 1.5rem;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .card-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 2rem auto;
+      }
+      
+      .form-container,
+      .policy-content {
+        padding: 2rem 1.5rem;
+      }
+      
+      .whatsapp-button,
+      .newsletter-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+      }
+      
+      .whatsapp-button {
+        right: 20px;
+      }
+      
+      .newsletter-button {
+        left: 20px;
+      }
+      
+      .newsletter-container {
+        bottom: 80px;
+        left: 20px;
+        max-width: calc(100% - 40px);
+      }
+      
+      .whatsapp-button:hover .whatsapp-tooltip {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .main-nav {
+        height: 70px;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .hero-content {
+        padding: 1.5rem 1rem;
+      }
+      
+      .hero-title {
+        margin-bottom: 1rem;
+      }
+      
+      .hero-text {
+        margin-bottom: 1.5rem;
+      }
+      
+      .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .section-title {
+        margin-bottom: 2rem;
+      }
+      
+      .form-container,
+      .policy-content {
+        padding: 1.5rem 1rem;
+      }
+      
+      .map-wrapper iframe {
+        height: 250px;
+      }
+      
+      .whatsapp-button,
+      .newsletter-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+      }
+      
+      .whatsapp-button {
+        right: 15px;
+      }
+      
+      .newsletter-button {
+        left: 15px;
+      }
+      
+      .newsletter-container {
+        bottom: 70px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Navigation -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="#home" class="logo">
+      <i class="fas fa-spa logo-icon"></i>
+      <span>Serene</span>
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="nav-container">
+      <ul class="nav-list">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li class="dropdown">
+          <div class="dropdown-toggle">
+            <a href="#" class="nav-link">More <i class="fas fa-chevron-down"></i></a>
+          </div>
+          <div class="dropdown-menu">
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#schedule" class="nav-link">Schedule</a>
+            <a href="#video" class="nav-link">Video</a>
+          </div>
+        </li>
+      </ul>
+      
+      <label class="theme-toggle" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-toggle" aria-checked="false">
+        <span class="toggle-slider"></span>
+        <span class="toggle-icon sun"><i class="fas fa-sun"></i></span>
+        <span class="toggle-icon moon" style="display:none;"><i class="fas fa-moon"></i></span>
+      </label>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 70%; left: 80%; animation-delay: 0.5s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; top: 40%; left: 90%; animation-delay: 1s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; top: 80%; left: 10%; animation-delay: 1.5s;"></div>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">Find Your Balance With Serene Yoga</h1>
+        <p class="hero-text">Discover the transformative power of yoga for your body and mind. Whether you're a beginner or a seasoned yogi, our community supports your journey to a healthier, calmer, and more balanced lifestyle.</p>
+        <a href="https://heylink.me/lilifreeha" class="cta-button" target="_blank" rel="noopener">Start Your Journey</a>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+      <h2 class="section-title">Why Practice Yoga?</h2>
+      <div class="card-grid">
+        <article class="card">
+          <i class="fas fa-spa card-icon"></i>
+          <h3 class="card-title">Stress Relief</h3>
+          <p>Yoga helps calm the mind, reduce anxiety, and promote relaxation through mindful movement and breathwork.</p>
+        </article>
+        
+        <article class="card">
+          <i class="fas fa-heartbeat card-icon"></i>
+          <h3 class="card-title">Improved Health</h3>
+          <p>Regular practice enhances flexibility, strength, and cardiovascular health, supporting overall well-being.</p>
+        </article>
+        
+        <article class="card">
+          <i class="fas fa-brain card-icon"></i>
+          <h3 class="card-title">Mental Clarity</h3>
+          <p>Yoga encourages focus and mindfulness, helping you stay present and centered in daily life.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+      <h2 class="section-title">What Our Students Say</h2>
+      <div class="card-grid">
+        <article class="card testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily R." class="testimonial-avatar" loading="lazy">
+          <div class="testimonial-name">Emily R.</div>
+          <div class="testimonial-role">Beginner Yogi</div>
+          <blockquote class="testimonial-text">Serene Yoga has changed my life! The classes are calming, and the instructors are so supportive. I feel stronger and more peaceful every day.</blockquote>
+        </article>
+        
+        <article class="card testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James K." class="testimonial-avatar" loading="lazy">
+          <div class="testimonial-name">James K.</div>
+          <div class="testimonial-role">Regular Member</div>
+          <blockquote class="testimonial-text">The schedule is flexible and the environment is so welcoming. I love the community and the positive energy in every class.</blockquote>
+        </article>
+        
+        <article class="card testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya S." class="testimonial-avatar" loading="lazy">
+          <div class="testimonial-name">Priya S.</div>
+          <div class="testimonial-role">Yoga Enthusiast</div>
+          <blockquote class="testimonial-text">The instructors at Serene Yoga are truly inspiring. My flexibility and focus have improved so much. Highly recommended!</blockquote>
+        </article>
+      </div>
+    </section>
+
+    <!-- Yoga Class Schedule Section -->
+    <section class="section" id="schedule">
+      <h2 class="section-title">Weekly Yoga Class Schedule</h2>
+      <div class="schedule-container">
+        <table class="schedule-table" aria-label="Yoga class schedule">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Morning</th>
+              <th scope="col">Evening</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Monday</th>
+              <td>7:00–8:00 AM (Hatha)</td>
+              <td>6:00–7:00 PM (Vinyasa)</td>
+            </tr>
+            <tr>
+              <th scope="row">Tuesday</th>
+              <td>8:00–9:00 AM (Gentle)</td>
+              <td>6:30–7:30 PM (Yin)</td>
+            </tr>
+            <tr>
+              <th scope="row">Wednesday</th>
+              <td>7:00–8:00 AM (Power)</td>
+              <td>6:00–7:00 PM (Restorative)</td>
+            </tr>
+            <tr>
+              <th scope="row">Thursday</th>
+              <td>8:00–9:00 AM (Vinyasa)</td>
+              <td>6:30–7:30 PM (Hatha)</td>
+            </tr>
+            <tr>
+              <th scope="row">Friday</th>
+              <td>7:00–8:00 AM (Gentle)</td>
+              <td>6:00–7:00 PM (Yin)</td>
+            </tr>
+            <tr>
+              <th scope="row">Saturday</th>
+              <td>9:00–10:00 AM (All Levels)</td>
+              <td>5:00–6:00 PM (Meditation)</td>
+            </tr>
+            <tr>
+              <th scope="row">Sunday</th>
+              <td>10:00–11:00 AM (Family Yoga)</td>
+              <td>Closed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Intro Video Section -->
+    <section class="section" id="video">
+      <h2 class="section-title">Yoga Studio Intro Video</h2>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/v7AYKMP6rOE" title="Yoga Intro Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <article class="faq-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="faq-question">
+            What should I bring to my first yoga class?
+            <span class="faq-toggle"><i class="fas fa-chevron-right"></i></span>
+          </div>
+          <div class="faq-answer">
+            Please bring a yoga mat, comfortable clothing, and a water bottle. We provide props and have mats available for rent if needed.
+          </div>
+        </article>
+        
+        <article class="faq-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="faq-question">
+            Do I need prior experience to join?
+            <span class="faq-toggle"><i class="fas fa-chevron-right"></i></span>
+          </div>
+          <div class="faq-answer">
+            Not at all! Our classes are suitable for all levels, and our instructors will guide you through every step.
+          </div>
+        </article>
+        
+        <article class="faq-item" tabindex="0" role="button" aria-expanded="false">
+          <div class="faq-question">
+            How do I sign up for a class?
+            <span class="faq-toggle"><i class="fas fa-chevron-right"></i></span>
+          </div>
+          <div class="faq-answer">
+            You can sign up online, call us, or simply drop in before class. For special workshops, please register in advance.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <form class="form-container" autocomplete="off" onsubmit="event.preventDefault(); showThankYou(); this.reset();">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" name="name" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-input" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit" class="form-button">Send Message</button>
+      </form>
+      
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@sereneyoga.com">info@sereneyoga.com</a></p>
+        <p><i class="fas fa-phone"></i> Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: 123 Peaceful Lane, Harmony City, USA</p>
+      </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="section" id="map">
+      <h2 class="section-title">Find Us</h2>
+      <div class="map-wrapper">
+        <iframe title="Serene Yoga Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019234858019!2d-122.4194151846816!3d37.7749297797597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c7e2e6b1b%3A0x7e4b7e4b7e4b7e4b!2s123%20Peaceful%20Lane%2C%20Harmony%20City%2C%20USA!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="section" id="blog">
+      <h2 class="section-title">From Our Blog</h2>
+      <div class="card-grid">
+        <article class="card blog-card">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Yoga for Beginners" class="blog-image" loading="lazy">
+          <div class="blog-content">
+            <h3 class="blog-title">5 Yoga Poses for Beginners</h3>
+            <div class="blog-meta"><i class="far fa-calendar"></i> July 2025 • <i class="far fa-user"></i> Anna Lee</div>
+            <p class="blog-excerpt">Start your yoga journey with these simple yet effective poses that anyone can do at home. Perfect for building strength and flexibility...</p>
+            <a href="https://example.com/blog/yoga-poses-beginners" class="read-more" target="_blank" rel="noopener">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="card blog-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Meditation and Mindfulness" class="blog-image" loading="lazy">
+          <div class="blog-content">
+            <h3 class="blog-title">Meditation & Mindfulness: A Guide</h3>
+            <div class="blog-meta"><i class="far fa-calendar"></i> June 2025 • <i class="far fa-user"></i> Mark T.</div>
+            <p class="blog-excerpt">Discover how meditation can help you find inner peace and clarity. Learn practical tips to incorporate mindfulness into your daily routine...</p>
+            <a href="https://example.com/blog/meditation-guide" class="read-more" target="_blank" rel="noopener">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="card blog-card">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Breathing Techniques" class="blog-image" loading="lazy">
+          <div class="blog-content">
+            <h3 class="blog-title">Essential Breathing Techniques</h3>
+            <div class="blog-meta"><i class="far fa-calendar"></i> May 2025 • <i class="far fa-user"></i> Sarah K.</div>
+            <p class="blog-excerpt">Master these fundamental breathing exercises to enhance your yoga practice and reduce stress in your daily life...</p>
+            <a href="https://example.com/blog/breathing-techniques" class="read-more" target="_blank" rel="noopener">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section class="section" id="privacy">
+      <h2 class="section-title">Privacy Policy</h2>
+      <div class="policy-content">
+        <p><strong>Last updated:</strong> July 28, 2025</p>
+        <p>
+          Serene Yoga ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website.
+        </p>
+        <h3>Information We Collect</h3>
+        <ul>
+          <li><strong>Personal Information:</strong> Name, email address, and any information you provide via our contact form.</li>
+          <li><strong>Usage Data:</strong> Non-personal information such as browser type, device, and pages visited.</li>
+        </ul>
+        <h3>How We Use Your Information</h3>
+        <ul>
+          <li>To respond to your inquiries and provide customer support.</li>
+          <li>To improve our website and services.</li>
+          <li>To send promotional materials (only if you opt-in).</li>
+        </ul>
+        <h3>Cookies</h3>
+        <p>
+          We may use cookies to enhance your experience. You can disable cookies in your browser settings.
+        </p>
+        <h3>Third-Party Links</h3>
+        <p>
+          Our website may contain affiliate or external links. We are not responsible for the privacy practices of those sites.
+        </p>
+        <h3>Data Security</h3>
+        <p>
+          We implement reasonable measures to protect your information, but no method is 100% secure.
+        </p>
+        <h3>Your Rights</h3>
+        <p>
+          You may request to access, update, or delete your personal information by contacting us.
+        </p>
+        <h3>Contact Us</h3>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@sereneyoga.com">info@sereneyoga.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://instagram.com/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/" class="social-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#home" class="footer-link">Home</a>
+        <a href="#schedule" class="footer-link">Schedule</a>
+        <a href="#faq" class="footer-link">FAQ</a>
+        <a href="#contact" class="footer-link">Contact</a>
+        <a href="#privacy" class="footer-link">Privacy Policy</a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Serene Yoga. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/923284077208" class="whatsapp-button" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+  </a>
+
+  <!-- Newsletter Button -->
+  <button class="newsletter-button" aria-label="Subscribe to newsletter">
+    <i class="fas fa-envelope"></i>
+  </button>
+
+  <!-- Newsletter Form -->
+  <div class="newsletter-container">
+    <h3 class="newsletter-title">Join Our Newsletter</h3>
+    <form autocomplete="off" onsubmit="event.preventDefault(); showNewsletterThankYou(); this.reset();">
+      <div class="form-group">
+        <input type="email" placeholder="Your email address" class="form-input" required aria-label="Email Address">
+      </div>
+      <button type="submit" class="form-button">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const sunIcon = document.querySelector('.toggle-icon.sun');
+    const moonIcon = document.querySelector('.toggle-icon.moon');
+    
+    function setTheme(theme) {
+      body.setAttribute('data-theme', theme);
+      if(theme === 'dark') {
+        themeToggle.checked = true;
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = '';
+      } else {
+        themeToggle.checked = false;
+        sunIcon.style.display = '';
+        moonIcon.style.display = 'none';
+      }
+      localStorage.setItem('theme', theme);
+    }
+    
+    function toggleTheme() {
+      setTheme(themeToggle.checked ? 'dark' : 'light');
+    }
+    
+    themeToggle.addEventListener('change', toggleTheme);
+    
+    // Initialize theme based on user preference or system setting
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if(saved) setTheme(saved);
+      else if(window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+      else setTheme('light');
+    })();
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', navList.classList.contains('active'));
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.querySelector('.main-nav');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Scroll reveal animations
+    function revealOnScroll() {
+      const elements = document.querySelectorAll('.section-title, .card, .schedule-container, .video-wrapper, .faq-item, .form-container, .map-wrapper');
+      
+      elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if(elementTop < window.innerHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+    
+    // Contact form thank you message
+    function showThankYou() {
+      const form = document.querySelector('#contact .form-container');
+      form.insertAdjacentHTML('afterend', 
+        `<div class="thankyou-message" style="text-align:center; color:var(--primary); font-weight:700; margin:1.5rem auto; animation:fadeIn 0.7s;">
+          Thank you for reaching out! We will get back to you soon.
+        </div>`
+      );
+      
+      setTimeout(() => {
+        const ty = document.querySelector('.thankyou-message');
+        if(ty) ty.remove();
+      }, 3500);
+    }
+    
+    // Newsletter thank you message
+    function showNewsletterThankYou() {
+      const newsletterContainer = document.querySelector('.newsletter-container');
+      newsletterContainer.insertAdjacentHTML('afterend', 
+        `<div class="thankyou-message" style="text-align:center; color:var(--primary); font-weight:700; margin:1.5rem auto; animation:fadeIn 0.7s;">
+          Thank you for subscribing to our newsletter!
+        </div>`
+      );
+      
+      setTimeout(() => {
+        const ty = document.querySelector('.thankyou-message');
+        if(ty) ty.remove();
+      }, 3500);
+      
+      // Close the newsletter form after submission
+      setTimeout(() => {
+        toggleNewsletter();
+      }, 1000);
+    }
+    
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', function() {
+        this.classList.toggle('open');
+        let expanded = this.classList.contains('open');
+        this.setAttribute('aria-expanded', expanded);
+      });
+      
+      item.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter' || e.key === ' ') {
+          this.classList.toggle('open');
+          let expanded = this.classList.contains('open');
+          this.setAttribute('aria-expanded', expanded);
+        }
+      });
+    });
+    
+    // Animate floating elements
+    const floatingElements = document.querySelectorAll('.floating-element');
+    floatingElements.forEach((el, index) => {
+      el.style.animationDelay = `${index * 0.5}s`;
+    });
+    
+    // Newsletter toggle functionality
+    const newsletterButton = document.querySelector('.newsletter-button');
+    const newsletterContainer = document.querySelector('.newsletter-container');
+    
+    function toggleNewsletter() {
+      newsletterContainer.classList.toggle('visible');
+      newsletterButton.setAttribute('aria-expanded', newsletterContainer.classList.contains('visible'));
+    }
+    
+    newsletterButton.addEventListener('click', toggleNewsletter);
+    
+    // Close newsletter when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!newsletterButton.contains(e.target) && !newsletterContainer.contains(e.target)) {
+        newsletterContainer.classList.remove('visible');
+        newsletterButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
